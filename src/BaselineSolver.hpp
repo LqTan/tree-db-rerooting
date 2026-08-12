@@ -4,6 +4,7 @@
 #include "Tree.hpp"
 #include <vector>
 #include <queue>
+using namespace std;
 
 // Thuật toán đối chiếu baseline sử dụng BFS từ từng đỉnh - Độ phức tạp O(N^2)
 // Trích nguồn lý thuyết: GeeksforGeeks [26], HackMD [27]
@@ -13,8 +14,8 @@ private:
     int N;
 
     long long bfs_distance(int start_node) {
-        std::vector<int> dist(N + 1, -1);
-        std::queue<int> q;
+        vector<int> dist(N + 1, -1);
+        queue<int> q;
 
         dist[start_node] = 0;
         q.push(start_node);
@@ -38,8 +39,8 @@ private:
 public:
     explicit BaselineSolver(const Tree& t) : tree(t), N(t.size()) {}
 
-    std::vector<long long> solve() {
-        std::vector<long long> ans(N + 1, 0);
+    vector<long long> solve() {
+        vector<long long> ans(N + 1, 0);
         if (N == 1) {
             ans.assign(N + 1, 0);
             return ans;

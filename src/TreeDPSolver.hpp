@@ -3,6 +3,7 @@
 
 #include "Tree.hpp"
 #include <vector>
+using namespace std;
 
 // Bộ giải quy hoạch động trên cây và Rerooting hai lượt DFS - Độ phức tạp O(N)
 // Trích nguồn lý thuyết: CSES [15], GeeksforGeeks [18], VNOI Wiki [21], Prince Gupta YouTube [23]
@@ -10,9 +11,9 @@ class TreeDPSolver {
 private:
     const Tree& tree;
     int N;
-    std::vector<int> sz;
-    std::vector<long long> down_dist;
-    std::vector<long long> ans;
+    vector<int> sz;
+    vector<long long> down_dist;
+    vector<long long> ans;
 
     // DFS 1 (Hậu thứ tự / Post-order): tính sz và down_dist từ con lên cha
     void dfs_down(int u, int parent) {
@@ -43,7 +44,7 @@ public:
         ans.assign(N + 1, 0);
     }
 
-    std::vector<long long> solve() {
+    vector<long long> solve() {
         if (N == 1) {
             ans.assign(N + 1, 0);
             return ans;

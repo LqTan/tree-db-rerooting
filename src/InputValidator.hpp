@@ -4,17 +4,17 @@
 #include <vector>
 #include <numeric>
 #include <stdexcept>
-#include <string>
+using namespace std;
 
 // Lớp xác thực cấu trúc cây sử dụng DSU để tìm chu trình và kiểm tra tính liên thông
 // Trích nguồn lý thuyết: Algorithms for Competitive Programming [11], USACO Guide [10]
 class InputValidator {
 private:
     struct DSU {
-        std::vector<int> parent;
+        vector<int> parent;
         DSU(int n) {
             parent.resize(n + 1);
-            std::iota(parent.begin(), parent.end(), 0);
+            iota(parent.begin(), parent.end(), 0);
         }
         int find_set(int v) {
             if (v == parent[v]) return v;
@@ -32,12 +32,12 @@ private:
     };
 
 public:
-    static void validate_and_build(int N, const std::vector<std::pair<int, int>>& edges) {
+    static void validate_and_build(int N, const vector<pair<int, int>>& edges) {
         if (N <= 0) {
-            throw std::invalid_argument("Loi: So dinh phai lon hon 0.");
+            throw invalid_argument("Loi: So dinh phai lon hon 0.");
         }
         if (edges.size() != static_cast<size_t>(N - 1)) {
-            throw std::invalid_argument("Loi: So canh khong thoa man bat bien cay (E = N - 1).");
+            throw invalid_argument("Loi: So canh khong thoa man bat bien cay (E = N - 1).");
         }
 
         DSU dsu(N);
@@ -48,19 +48,19 @@ public:
             int v = edge.second;
 
             if (u < 1 || u > N || v < 1 || v > N) {
-                throw std::out_of_range("Loi: Chi so dinh nam ngoai pham vi [1, N].");
+                throw out_of_range("Loi: Chi so dinh nam ngoai pham vi [1, N].");
             }
             if (u == v) {
-                throw std::invalid_argument("Loi: Ton tai tu khuyen (self-loop).");
+                throw invalid_argument("Loi: Ton tai tu khuyen (self-loop).");
             }
             if (!dsu.union_sets(u, v)) {
-                throw std::invalid_argument("Loi: Do thi co chu trinh, khong phai cau truc cay.");
+                throw invalid_argument("Loi: Do thi co chu trinh, khong phai cau truc cay.");
             }
             components--;
         }
 
         if (components != 1) {
-            throw std::invalid_argument("Loi: Do thi bi phan manh, khong lien thong.");
+            throw invalid_argument("Loi: Do thi bi phan manh, khong lien thong.");
         }
     }
 };

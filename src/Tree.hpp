@@ -2,13 +2,14 @@
 #define TREE_HPP
 
 #include <vector>
+using namespace std;
 
 // Lớp biểu diễn đồ thị dạng cây dưới dạng danh sách kề tối ưu bộ nhớ
 // Trích nguồn lý thuyết: GeeksforGeeks [7], VNOI Wiki [8]
 class Tree {
 private:
     int num_nodes;
-    std::vector<std::vector<int>> adj;
+    vector<vector<int>> adj;
 
 public:
     explicit Tree(int n) : num_nodes(n) {
@@ -24,7 +25,7 @@ public:
         return num_nodes;
     }
 
-    const std::vector<int>& get_neighbors(int u) const {
+    const vector<int>& get_neighbors(int u) const {
         return adj[u];
     }
 

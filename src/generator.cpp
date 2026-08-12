@@ -4,83 +4,84 @@
 #include <string>
 #include <algorithm>
 #include <chrono>
+using namespace std;
 
 // Trình sinh cây đa dạng phục vụ kiểm thử thực nghiệm
 // Trích nguồn phương pháp: VNOI Wiki [6, 29]
-std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 long long rand_range(long long l, long long r) {
-    return std::uniform_int_distribution<long long>(l, r)(rng);
+    return uniform_int_distribution<long long>(l, r)(rng);
 }
 
 void generate_single_node() {
-    std::cout << 1 << "\n";
+    cout << 1 << "\n";
 }
 
 void generate_line_tree(int N) {
-    std::cout << N << "\n";
-    std::vector<std::pair<int, int>> edges;
+    cout << N << "\n";
+    vector<pair<int, int>> edges;
     for (int i = 1; i < N; ++i) {
         edges.push_back({i, i + 1});
     }
-    std::shuffle(edges.begin(), edges.end(), rng);
+    shuffle(edges.begin(), edges.end(), rng);
     for (auto const& edge : edges) {
-        std::cout << edge.first << " " << edge.second << "\n";
+        cout << edge.first << " " << edge.second << "\n";
     }
 }
 
 void generate_star_tree(int N) {
-    std::cout << N << "\n";
+    cout << N << "\n";
     int center = 1;
-    std::vector<std::pair<int, int>> edges;
+    vector<pair<int, int>> edges;
     for (int i = 2; i <= N; ++i) {
         edges.push_back({center, i});
     }
-    std::shuffle(edges.begin(), edges.end(), rng);
+    shuffle(edges.begin(), edges.end(), rng);
     for (auto const& edge : edges) {
-        std::cout << edge.first << " " << edge.second << "\n";
+        cout << edge.first << " " << edge.second << "\n";
     }
 }
 
 void generate_balanced_tree(int N) {
-    std::cout << N << "\n";
-    std::vector<std::pair<int, int>> edges;
+    cout << N << "\n";
+    vector<pair<int, int>> edges;
     for (int i = 2; i <= N; ++i) {
         int parent = i / 2;
         edges.push_back({parent, i});
     }
-    std::shuffle(edges.begin(), edges.end(), rng);
+    shuffle(edges.begin(), edges.end(), rng);
     for (auto const& edge : edges) {
-        std::cout << edge.first << " " << edge.second << "\n";
+        cout << edge.first << " " << edge.second << "\n";
     }
 }
 
 void generate_random_tree(int N) {
-    std::cout << N << "\n";
-    std::vector<std::pair<int, int>> edges;
+    cout << N << "\n";
+    vector<pair<int, int>> edges;
     for (int i = 2; i <= N; ++i) {
         int parent = rand_range(1, i - 1);
         edges.push_back({parent, i});
     }
-    std::shuffle(edges.begin(), edges.end(), rng);
+    shuffle(edges.begin(), edges.end(), rng);
     for (auto const& edge : edges) {
         if (rand_range(0, 1)) {
-            std::cout << edge.second << " " << edge.first << "\n";
+            cout << edge.second << " " << edge.first << "\n";
         } else {
-            std::cout << edge.first << " " << edge.second << "\n";
+            cout << edge.first << " " << edge.second << "\n";
         }
     }
 }
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
-        std::cerr << "Cach dung: " << argv << " <N> <Loai_Cay>\n";
-        std::cerr << "Loai_Cay: single, line, star, balanced, random\n";
+        cerr << "Cach dung: " << argv << " <N> <Loai_Cay>\n";
+        cerr << "Loai_Cay: single, line, star, balanced, random\n";
         return 1;
     }
 
-    int N = std::stoi(argv[1]);
-    std::string type = argv[2];
+    int N = stoi(argv[1]);
+    string type = argv[2];
 
     if (type == "single") {
         generate_single_node();
@@ -93,7 +94,7 @@ int main(int argc, char* argv[]) {
     } else if (type == "random") {
         generate_random_tree(N);
     } else {
-        std::cerr << "Loi: Khong ho tro dang cay " << type << "\n";
+        cerr << "Loi: Khong ho tro dang cay " << type << "\n";
         return 1;
     }
 
