@@ -26,6 +26,14 @@ int main(int argc, char* argv[]) {
 
         IndexMapper<string> mapper;
         vector<pair<int, int>> mapped_edges;
+
+        if (N == 1) {
+            string node_name;
+            if (!(cin >> node_name)){
+                node_name = "1";
+            }
+            mapper.get_or_create_index(node_name);
+        }
         mapped_edges.reserve(N - 1);
 
         for (int i = 0; i < N - 1; ++i) {
