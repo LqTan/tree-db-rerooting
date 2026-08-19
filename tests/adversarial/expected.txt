@@ -1,0 +1,8 @@
+adv_01_self_loop.txt:1:Tu khuyen -> phai bi tu choi
+adv_02_cycle_duplicate_edge.txt:1:Canh song song tao chu trinh -> phai bi tu choi
+adv_03_cycle_triangle_extra.txt:1:Tam giac tao chu trinh -> phai bi tu choi
+adv_04_too_few_edges.txt:1:Thieu canh (E < N-1) -> phai bi tu choi
+adv_05_trailing_data_ignored.txt:0:Du lieu du thua sau N-1 canh bi bo qua (khong phai loi)
+adv_06_zero_nodes.txt:1:N=0 khong hop le -> phai bi tu choi
+adv_07_negative_nodes.txt:1:N am khong hop le -> phai bi tu choi
+adv_08_empty_input.txt:0:Input rong -> thoat nhe nhang, khong crash

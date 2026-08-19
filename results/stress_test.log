@@ -1,0 +1,164 @@
+Nhat ky kiem thu duoc ghi dong thoi tai: ./results/stress_test.log
+
+================================================================
+  1) TEST CO BAN (Basic Tests)
+================================================================
+  [PASS] basic_01_tree8.txt  (TreeDPSolver == BaselineSolver)
+  [PASS] basic_02_string_labels.txt  (TreeDPSolver == BaselineSolver)
+  [PASS] basic_03_line5.txt  (TreeDPSolver == BaselineSolver)
+  [PASS] basic_04_star5.txt  (TreeDPSolver == BaselineSolver)
+  [PASS] basic_05_balanced7.txt  (TreeDPSolver == BaselineSolver)
+
+  Doi chieu tay cho basic_01_tree8.txt (cay chuan 8 dinh):
+  Cay: 1-2,1-3,2-4,2-5,3-6,3-7,7-8 ; tinh tay tu dinh 1 = 0+1+1+2+2+2+2+3 = 13
+  [PASS] basic_01_tree8.txt: ans[1]=13 khop voi tinh tay
+
+================================================================
+  2) TEST BIEN (Edge Case Tests)
+================================================================
+  [PASS] edge_01_n1_default_label.txt -> '1 0'
+  [PASS] edge_02_n1_custom_label.txt -> 'Hanoi 0'
+  [PASS] edge_03_n2.txt -> khoang cach = 1
+
+  --- Regression test: chong tran ngan xep (cay duong thang N=200.000) ---
+  [PASS] edge_04_line_200000.txt chay xong voi stack mac dinh (.274755658s)
+  [PASS] edge_04_line_200000.txt VAN CHAY DUNG voi stack 256KB (truoc day se Segmentation fault)
+  [PASS] edge_05_star_200000.txt chay xong (.145744020s)
+  [PASS] edge_06_overflow_check: khong co gia tri am (max=19999900000)
+
+================================================================
+  3) TEST DOI KHANG (Adversarial Tests)
+================================================================
+  [PASS] adv_01_self_loop.txt  [Tu khuyen -> phai bi tu choi]
+  [PASS] adv_02_cycle_duplicate_edge.txt  [Canh song song tao chu trinh -> phai bi tu choi]
+  [PASS] adv_03_cycle_triangle_extra.txt  [Tam giac tao chu trinh -> phai bi tu choi]
+  [PASS] adv_04_too_few_edges.txt  [Thieu canh (E < N-1) -> phai bi tu choi]
+  [PASS] adv_05_trailing_data_ignored.txt  [Du lieu du thua sau N-1 canh bi bo qua (khong phai loi)]
+  [PASS] adv_06_zero_nodes.txt  [N=0 khong hop le -> phai bi tu choi]
+  [PASS] adv_07_negative_nodes.txt  [N am khong hop le -> phai bi tu choi]
+  [PASS] adv_08_empty_input.txt  [Input rong -> thoat nhe nhang, khong crash]
+
+================================================================
+  4) TEST NGAU NHIEN DOI CHIEU (100 testcase)
+================================================================
+  [PASS] [1/100] loai=line N=1 (TreeDP:.003951648s Baseline:.003580577s)
+  [PASS] [2/100] loai=line N=2 (TreeDP:.003409738s Baseline:.003804016s)
+  [PASS] [3/100] loai=line N=3 (TreeDP:.003484259s Baseline:.003724486s)
+  [PASS] [4/100] loai=line N=5 (TreeDP:.004021193s Baseline:.003794444s)
+  [PASS] [5/100] loai=line N=8 (TreeDP:.003971090s Baseline:.005136518s)
+  [PASS] [6/100] loai=line N=10 (TreeDP:.003619252s Baseline:.003588247s)
+  [PASS] [7/100] loai=line N=15 (TreeDP:.003595138s Baseline:.003805864s)
+  [PASS] [8/100] loai=line N=20 (TreeDP:.004140567s Baseline:.003586512s)
+  [PASS] [9/100] loai=line N=30 (TreeDP:.003558566s Baseline:.003513537s)
+  [PASS] [10/100] loai=line N=50 (TreeDP:.003591403s Baseline:.003966187s)
+  [PASS] [11/100] loai=line N=75 (TreeDP:.006269633s Baseline:.003675470s)
+  [PASS] [12/100] loai=line N=100 (TreeDP:.003883876s Baseline:.003705992s)
+  [PASS] [13/100] loai=line N=150 (TreeDP:.004018787s Baseline:.003808862s)
+  [PASS] [14/100] loai=line N=200 (TreeDP:.003607370s Baseline:.004087669s)
+  [PASS] [15/100] loai=line N=300 (TreeDP:.003606631s Baseline:.004685792s)
+  [PASS] [16/100] loai=line N=500 (TreeDP:.003902718s Baseline:.006374904s)
+  [PASS] [17/100] loai=line N=750 (TreeDP:.004372481s Baseline:.010942409s)
+  [PASS] [18/100] loai=line N=1000 (TreeDP:.004225214s Baseline:.016906874s)
+  [PASS] [19/100] loai=line N=1500 (TreeDP:.005254250s Baseline:.036967129s)
+  [PASS] [20/100] loai=line N=2000 (TreeDP:.005081807s Baseline:.066863639s)
+  [PASS] [21/100] loai=line N=3000 (TreeDP:.005530940s Baseline:.153437035s)
+  [PASS] [22/100] loai=line N=4000 (TreeDP:.006524588s Baseline:.277652867s)
+  [PASS] [23/100] loai=line N=6000 (TreeDP:.012667330s Baseline:.668254089s)
+  [PASS] [24/100] loai=line N=8000 (TreeDP:.010828722s Baseline:1.278837789s)
+  [PASS] [25/100] loai=line N=12000 (TreeDP:.012284592s Baseline:2.984535611s)
+  [PASS] [26/100] loai=star N=1 (TreeDP:.003545719s Baseline:.003663359s)
+  [PASS] [27/100] loai=star N=2 (TreeDP:.003626535s Baseline:.003545175s)
+  [PASS] [28/100] loai=star N=3 (TreeDP:.003580193s Baseline:.003906673s)
+  [PASS] [29/100] loai=star N=5 (TreeDP:.003730902s Baseline:.003611848s)
+  [PASS] [30/100] loai=star N=8 (TreeDP:.003905607s Baseline:.003791999s)
+  [PASS] [31/100] loai=star N=10 (TreeDP:.003830404s Baseline:.003828557s)
+  [PASS] [32/100] loai=star N=15 (TreeDP:.003777957s Baseline:.003900549s)
+  [PASS] [33/100] loai=star N=20 (TreeDP:.003700475s Baseline:.003519752s)
+  [PASS] [34/100] loai=star N=30 (TreeDP:.003582283s Baseline:.003833376s)
+  [PASS] [35/100] loai=star N=50 (TreeDP:.003594988s Baseline:.003744991s)
+  [PASS] [36/100] loai=star N=75 (TreeDP:.003800967s Baseline:.003810995s)
+  [PASS] [37/100] loai=star N=100 (TreeDP:.003605023s Baseline:.003821392s)
+  [PASS] [38/100] loai=star N=150 (TreeDP:.003977371s Baseline:.003716459s)
+  [PASS] [39/100] loai=star N=200 (TreeDP:.003658794s Baseline:.004056074s)
+  [PASS] [40/100] loai=star N=300 (TreeDP:.003881805s Baseline:.004040714s)
+  [PASS] [41/100] loai=star N=500 (TreeDP:.003723547s Baseline:.004760706s)
+  [PASS] [42/100] loai=star N=750 (TreeDP:.004002954s Baseline:.006412840s)
+  [PASS] [43/100] loai=star N=1000 (TreeDP:.004035305s Baseline:.008044749s)
+  [PASS] [44/100] loai=star N=1500 (TreeDP:.005025295s Baseline:.014747985s)
+  [PASS] [45/100] loai=star N=2000 (TreeDP:.004572280s Baseline:.020887758s)
+  [PASS] [46/100] loai=star N=3000 (TreeDP:.005148445s Baseline:.042413118s)
+  [PASS] [47/100] loai=star N=4000 (TreeDP:.005676040s Baseline:.075268123s)
+  [PASS] [48/100] loai=star N=6000 (TreeDP:.006953963s Baseline:.154104344s)
+  [PASS] [49/100] loai=star N=8000 (TreeDP:.010142019s Baseline:.294794358s)
+  [PASS] [50/100] loai=star N=12000 (TreeDP:.010662446s Baseline:.626901640s)
+  [PASS] [51/100] loai=balanced N=1 (TreeDP:.003803081s Baseline:.004547255s)
+  [PASS] [52/100] loai=balanced N=2 (TreeDP:.003759934s Baseline:.003719310s)
+  [PASS] [53/100] loai=balanced N=3 (TreeDP:.003705610s Baseline:.003841445s)
+  [PASS] [54/100] loai=balanced N=5 (TreeDP:.003855221s Baseline:.003568991s)
+  [PASS] [55/100] loai=balanced N=8 (TreeDP:.003645228s Baseline:.004082993s)
+  [PASS] [56/100] loai=balanced N=10 (TreeDP:.003579725s Baseline:.003543867s)
+  [PASS] [57/100] loai=balanced N=15 (TreeDP:.003739179s Baseline:.003945395s)
+  [PASS] [58/100] loai=balanced N=20 (TreeDP:.003653302s Baseline:.003696373s)
+  [PASS] [59/100] loai=balanced N=30 (TreeDP:.003882898s Baseline:.003523327s)
+  [PASS] [60/100] loai=balanced N=50 (TreeDP:.003684863s Baseline:.003638116s)
+  [PASS] [61/100] loai=balanced N=75 (TreeDP:.003611509s Baseline:.003648030s)
+  [PASS] [62/100] loai=balanced N=100 (TreeDP:.003680416s Baseline:.003834220s)
+  [PASS] [63/100] loai=balanced N=150 (TreeDP:.003686602s Baseline:.003760593s)
+  [PASS] [64/100] loai=balanced N=200 (TreeDP:.003631043s Baseline:.003897915s)
+  [PASS] [65/100] loai=balanced N=300 (TreeDP:.003715683s Baseline:.004364169s)
+  [PASS] [66/100] loai=balanced N=500 (TreeDP:.004204166s Baseline:.004964528s)
+  [PASS] [67/100] loai=balanced N=750 (TreeDP:.004002898s Baseline:.010782064s)
+  [PASS] [68/100] loai=balanced N=1000 (TreeDP:.004952091s Baseline:.008964639s)
+  [PASS] [69/100] loai=balanced N=1500 (TreeDP:.004563763s Baseline:.015956662s)
+  [PASS] [70/100] loai=balanced N=2000 (TreeDP:.005954399s Baseline:.026873826s)
+  [PASS] [71/100] loai=balanced N=3000 (TreeDP:.005707758s Baseline:.055894615s)
+  [PASS] [72/100] loai=balanced N=4000 (TreeDP:.006386938s Baseline:.106877446s)
+  [PASS] [73/100] loai=balanced N=6000 (TreeDP:.007796228s Baseline:.284207918s)
+  [PASS] [74/100] loai=balanced N=8000 (TreeDP:.010610661s Baseline:.593085952s)
+  [PASS] [75/100] loai=balanced N=12000 (TreeDP:.012122634s Baseline:1.510376031s)
+  [PASS] [76/100] loai=random N=1 (TreeDP:.003795391s Baseline:.003999345s)
+  [PASS] [77/100] loai=random N=2 (TreeDP:.003560684s Baseline:.003514507s)
+  [PASS] [78/100] loai=random N=3 (TreeDP:.003693971s Baseline:.003757836s)
+  [PASS] [79/100] loai=random N=5 (TreeDP:.004506162s Baseline:.003499998s)
+  [PASS] [80/100] loai=random N=8 (TreeDP:.004243953s Baseline:.004190626s)
+  [PASS] [81/100] loai=random N=10 (TreeDP:.003628031s Baseline:.003432542s)
+  [PASS] [82/100] loai=random N=15 (TreeDP:.005537277s Baseline:.003621090s)
+  [PASS] [83/100] loai=random N=20 (TreeDP:.003720555s Baseline:.003649528s)
+  [PASS] [84/100] loai=random N=30 (TreeDP:.003600510s Baseline:.004491676s)
+  [PASS] [85/100] loai=random N=50 (TreeDP:.003817089s Baseline:.004403248s)
+  [PASS] [86/100] loai=random N=75 (TreeDP:.003617652s Baseline:.004414334s)
+  [PASS] [87/100] loai=random N=100 (TreeDP:.003581323s Baseline:.003808617s)
+  [PASS] [88/100] loai=random N=150 (TreeDP:.003637677s Baseline:.003946218s)
+  [PASS] [89/100] loai=random N=200 (TreeDP:.003670242s Baseline:.003933912s)
+  [PASS] [90/100] loai=random N=300 (TreeDP:.003774517s Baseline:.004281277s)
+  [PASS] [91/100] loai=random N=500 (TreeDP:.004161938s Baseline:.005540442s)
+  [PASS] [92/100] loai=random N=750 (TreeDP:.004176505s Baseline:.008231612s)
+  [PASS] [93/100] loai=random N=1000 (TreeDP:.004180155s Baseline:.013344646s)
+  [PASS] [94/100] loai=random N=1500 (TreeDP:.004961108s Baseline:.030578636s)
+  [PASS] [95/100] loai=random N=2000 (TreeDP:.004914750s Baseline:.065820290s)
+  [PASS] [96/100] loai=random N=3000 (TreeDP:.005943740s Baseline:.158119525s)
+  [PASS] [97/100] loai=random N=4000 (TreeDP:.006603786s Baseline:.314871183s)
+  [PASS] [98/100] loai=random N=6000 (TreeDP:.008397651s Baseline:.733824768s)
+  [PASS] [99/100] loai=random N=8000 (TreeDP:.009712797s Baseline:1.401013292s)
+  [PASS] [100/100] loai=random N=12000 (TreeDP:.012866728s Baseline:3.367773457s)
+
+  Nhat ky chi tiet 100 testcase da luu tai: ./results/random_stress_log.csv
+
+================================================================
+  5) MINH HOA HIEU NANG: O(N) so voi O(N^2) tren N=200.000
+================================================================
+  Dang chay TreeDPSolver (O(N))...
+  => TreeDPSolver hoan thanh trong .263088948 giay
+
+  Dang chay BaselineSolver (O(N^2)) voi gioi han 10 giay...
+  => BaselineSolver KHONG hoan thanh sau 10 giay (bi timeout)
+
+================================================================
+  TONG KET
+================================================================
+  Tong so test da chay : 121
+  Dat (PASS)           : 121
+  Khong dat (FAIL)     : 0
+  Thoi gian chay toan bo bo test: 29s
+
+  TAT CA TEST DEU DAT.
